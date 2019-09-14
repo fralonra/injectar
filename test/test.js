@@ -5,6 +5,35 @@ const injectar = require('../src')
 
 const testUrl = 'http://example.com:8080/hello'
 
+const httpMethods = [
+  'delete',
+  'get',
+  'head',
+  'options',
+  'patch',
+  'post',
+  'put',
+  'trace'
+]
+
+test('http methods', (t) => {
+  t.plan(16)
+
+  function dispatch (req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' })
+    res.end(req.method)
+  }
+
+  httpMethods.forEach(method => {
+    injectar(dispatch)
+      [method](testUrl)
+      .end((err, res) => {
+        t.error(err)
+        t.equal(res.body, method.toUpperCase())
+      })
+  })
+})
+
 test('body: string', (t) => {
   t.plan(2)
 
