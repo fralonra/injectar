@@ -1,10 +1,10 @@
 const inject = require('light-my-request')
 
 function build (dispatch) {
-  return new injectar(dispatch)
+  return new Injectar(dispatch)
 }
 
-function injectar (dispatch) {
+function Injectar (dispatch) {
   this.options = {}
   this.dispatch = dispatch
 }
@@ -21,7 +21,7 @@ const httpMethods = [
 ]
 
 httpMethods.forEach(method => {
-  injectar.prototype[method] = function (url) {
+  Injectar.prototype[method] = function (url) {
     this.options.url = url
     this.options.method = method.toUpperCase()
     return this
@@ -36,13 +36,13 @@ const chainMethods = [
 ]
 
 chainMethods.forEach(method => {
-  injectar.prototype[method] = function (value) {
+  Injectar.prototype[method] = function (value) {
     this.options[method] = value
     return this
   }
 })
 
-injectar.prototype.end = function (callback) {
+Injectar.prototype.end = function (callback) {
   inject(this.dispatch, this.options, callback)
 }
 
