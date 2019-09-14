@@ -5,7 +5,7 @@ function build (dispatch) {
 }
 
 function Injectar (dispatch) {
-  this.options = {}
+  this.option = {}
   this.dispatch = dispatch
 }
 
@@ -22,8 +22,8 @@ const httpMethods = [
 
 httpMethods.forEach(method => {
   Injectar.prototype[method] = function (url) {
-    this.options.url = url
-    this.options.method = method.toUpperCase()
+    this.option.url = url
+    this.option.method = method.toUpperCase()
     return this
   }
 })
@@ -37,13 +37,13 @@ const chainMethods = [
 
 chainMethods.forEach(method => {
   Injectar.prototype[method] = function (value) {
-    this.options[method] = value
+    this.option[method] = value
     return this
   }
 })
 
 Injectar.prototype.end = function (callback) {
-  inject(this.dispatch, this.options, callback)
+  inject(this.dispatch, this.option, callback)
 }
 
 module.exports = build
