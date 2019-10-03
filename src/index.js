@@ -4,8 +4,10 @@ function build (dispatch) {
   return new Injectar(dispatch)
 }
 
-function Injectar (dispatch) {
-  this.option = {}
+function Injectar (dispatch, option = {}) {
+  this.option = {
+    ...option
+  }
   this.dispatch = dispatch
 }
 
