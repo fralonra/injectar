@@ -38,7 +38,7 @@ injectar(dispatch)
 
 Check the document for [light-my-request](https://github.com/fastify/light-my-request) for more.
 
-#### constructor (dispatchFunction, options)
+#### constructor (dispatchFunction[, options])
 
 The constructor recieves two arguments: the dispatch function and the options to be passed to the `light-my-request` instance.
 

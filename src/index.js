@@ -1,7 +1,7 @@
 const inject = require('light-my-request')
 
-function build (dispatch) {
-  return new Injectar(dispatch)
+function build (dispatch, option) {
+  return new Injectar(dispatch, option)
 }
 
 function Injectar (dispatch, option = {}) {
