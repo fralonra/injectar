@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/fralonra/injectar#readme",
   "dependencies": {
-    "light-my-request": "^3.4.1"
+    "light-my-request": "^3.6.0"
   },
   "devDependencies": {
     "snazzy": "^8.0.0",
