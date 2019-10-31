@@ -1,7 +1,7 @@
 {
   "name": "injectar",
-  "version": "1.2.0",
-  "description": "",
+  "version": "1.2.1",
+  "description": "Inject a fake http request to test, debug your server logic with ease.",
   "main": "src/index.js",
   "scripts": {
     "coverage": "npm run unit -- --cov --coverage-report=html",
