@@ -1,7 +1,7 @@
 # injectar
 
 [![npm version](https://img.shields.io/npm/v/injectar.svg)](https://www.npmjs.com/package/injectar)
-[![Build Status](https://travis-ci.org/fralonra/injectar.svg?branch=master)](https://travis-ci.org/fralonra/injectar)
+[![Build Status](https://travis-ci.org/fralonra/injectar.svg?branch=master)](https://travis-ci.org/fralonra/injectar) [![Greenkeeper badge](https://badges.greenkeeper.io/fralonra/injectar.svg)](https://greenkeeper.io/)
 
 Inject a fake http request to test, debug your server logic with ease. Using [light-my-request](https://github.com/fastify/light-my-request) internally. Provide friendly and chainable APIs based on `light-my-request`.
 
