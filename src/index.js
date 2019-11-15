@@ -44,6 +44,14 @@ chainMethods.forEach(method => {
   }
 })
 
+Injectar.prototype.header = function (key, value) {
+  if (!this.option.headers) {
+    this.option.headers = {}
+  }
+  this.option.headers[key] = value
+  return this
+}
+
 Injectar.prototype.end = function (callback) {
   inject(this.dispatch, this.option, callback)
 }

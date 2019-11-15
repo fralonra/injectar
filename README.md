@@ -70,7 +70,7 @@ injectar(dispatch)
 
 #### headers
 
-Add headers.
+Add request headers.
 
 ```javascript
 injectar(dispatch)
@@ -81,6 +81,22 @@ injectar(dispatch)
   })
 })
 ```
+
+#### header
+
+Add a single request header.
+
+```javascript
+injectar(dispatch)
+  .get('http://example.site/test')
+  .header('foo', 'bar')
+  .end((err, res) => {
+    // do something
+  })
+})
+```
+
+*NOTE*: If followed by a `headers` method, the value provided by `headers` will override the previous set headers, instead of combining them.
 
 #### payload
 

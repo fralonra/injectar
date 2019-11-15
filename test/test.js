@@ -68,6 +68,43 @@ test('headers', (t) => {
     })
 })
 
+test('header', (t) => {
+  t.plan(2)
+
+  function dispatch (req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' })
+    res.end(req.headers.foo)
+  }
+
+  injectar(dispatch)
+    .get(testUrl)
+    .header('foo', 'bar')
+    .end((err, res) => {
+      t.error(err)
+      t.equal(res.payload, 'bar')
+    })
+})
+
+test('headers and header combination', (t) => {
+  t.plan(3)
+
+  function dispatch (req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' })
+    res.end(JSON.stringify(req.headers))
+  }
+
+  injectar(dispatch)
+    .get(testUrl)
+    .headers({ foo: 'bar' })
+    .header('test', '123')
+    .end((err, res) => {
+      t.error(err)
+      const payload = JSON.parse(res.payload)
+      t.equal(payload.foo, 'bar')
+      t.equal(payload.test, '123')
+    })
+})
+
 test('payload', (t) => {
   t.plan(2)
 
