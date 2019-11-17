@@ -1,4 +1,5 @@
 import * as http from 'http'
+import * as stream from 'stream'
 
 type HTTPMethods = 'DELETE' | 'delete' |
                    'GET' | 'get' |
@@ -20,6 +21,28 @@ declare namespace Injectar {
   type CallbackFunc = (err: Error, response: Response) => void
 
   type InjectPayload = string | object | Buffer | NodeJS.ReadableStream
+
+  interface Request extends stream.Readable {
+    url: string
+    httpVersion: string
+    method: HTTPMethods
+    headers: http.IncomingHttpHeaders
+    prepare: (next: () => void) => void
+  }
+
+  interface Response extends http.ServerResponse {
+    raw: {
+      res: http.ServerResponse
+    }
+    rawPayload: Buffer
+    headers: http.OutgoingHttpHeaders
+    statusCode: number
+    statusMessage: string
+    trailers: { [key: string]: string }
+    payload: string
+    body: string
+    json: () => object
+  }
 
   interface InjectOptions {
     url?: string | {
@@ -69,7 +92,7 @@ declare namespace Injectar {
     header: (headerKey: string, headerValue: string) => Injectar
     payload: (payload: InjectPayload) => Injectar
     query: (query: object) => Injectar
-    end: (callback: CallbackFunc) => void
+    end: (callback?: CallbackFunc) => void | Promise<Response>
   }
 }
 
