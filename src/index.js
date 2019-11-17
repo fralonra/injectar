@@ -53,7 +53,11 @@ Injectar.prototype.header = function (key, value) {
 }
 
 Injectar.prototype.end = function (callback) {
-  inject(this.dispatch, this.option, callback)
+  if (typeof callback === 'function') {
+    inject(this.dispatch, this.option, callback)
+  } else {
+    return inject(this.dispatch, this.option)
+  }
 }
 
 module.exports = build

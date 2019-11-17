@@ -138,3 +138,21 @@ test('query', (t) => {
       t.equal(res.payload, '/hello?foo=bar')
     })
 })
+
+test('async/await', async t => {
+  function dispatch (req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' })
+    res.end(req.headers.foo)
+  }
+
+  try {
+    const res = await injectar(dispatch)
+      .get(testUrl)
+      .header('foo', 'bar')
+      .end()
+
+    t.equal(res.payload, 'bar')
+  } catch (err) {
+    t.error(err)
+  }
+})
