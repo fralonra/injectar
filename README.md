@@ -33,6 +33,15 @@ injectar(dispatch)
     // do something
   })
 })
+
+// or using async/await
+try {
+  await injectar(dispatch)
+    .get('http://example.site/test')
+    .end()
+} catch (err) {
+  // handle error
+}
 ```
 
 ## API
