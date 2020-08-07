@@ -3,6 +3,8 @@
 [![npm version](https://img.shields.io/npm/v/injectar.svg)](https://www.npmjs.com/package/injectar)
 [![Build Status](https://travis-ci.com/fralonra/injectar.svg?branch=master)](https://travis-ci.com/fralonra/injectar) [![Greenkeeper badge](https://badges.greenkeeper.io/fralonra/injectar.svg)](https://greenkeeper.io/)
 
+### **Deprecated**: [light-my-request](https://github.com/fastify/light-my-request) is now supporting chainable APIs! Check [here](https://github.com/fastify/light-my-request#method-chaining).
+
 Inject a fake http request to test, debug your server logic with ease. Using [light-my-request](https://github.com/fastify/light-my-request) internally. Provide friendly and chainable APIs based on `light-my-request`.
 
 ## Install
